@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lighthouse</string>
+    <string name="buttonSync">CallSync</string>
+    <string name="buttonAsync">CallAsync</string>
+</resources>
