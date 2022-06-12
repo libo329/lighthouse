@@ -4,16 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width; initial-scale=0.35;user-scalable=yes;">
 </head>
 
 <link rel="stylesheet" href="main.css">
-<script src="music.js"></script>
+
+<!-- 钢琴解析的js -->
+<script src="./opensheetmusicdisplay.min.js"></script>
+<script src="./music.js"></script>
 
 <body>
-    <!-- <div id="SDBridge"> web content </div> -->
-    <div class="container" id="musicMain">
-        <button id="startRecord" class="ctrbutton">开始录音</button>
-        <button id="stopRecord" class="ctrbutton">停止录音</button>
+    <div class="container">
+        <div id="musicxml"></div>
+        <div id="musicMain">
+            <button id="startRecord" class="ctrbutton">开始录音</button>
+            <button id="stopRecord" class="ctrbutton">停止录音</button>
+        </div>
     </div>
 </body>
 

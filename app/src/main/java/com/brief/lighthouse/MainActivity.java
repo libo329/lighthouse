@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -25,6 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         WebView webview = findViewById(R.id.webView);
+        //支持javascript
+        webview.getSettings().setJavaScriptEnabled(true);
+// 设置可以支持缩放
+        webview.getSettings().setSupportZoom(true);
+// 设置出现缩放工具
+        webview.getSettings().setBuiltInZoomControls(true);
+//扩大比例的缩放
+        webview.getSettings().setUseWideViewPort(true);
+//自适应屏幕
+//        webview.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+//        webview.getSettings().setLoadWithOverviewMode(true);
 //        Button buttonSync = findViewById(R.id.buttonSync);
 //        Button buttonAsync = findViewById(R.id.buttonAsync);
 //        buttonSync.setOnClickListener(this);

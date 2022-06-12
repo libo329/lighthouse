@@ -4,6 +4,22 @@ setTimeout(() => {
     console.log("libo---");
     console.log(600 + "px")
 
+    var osmd = new opensheetmusicdisplay.OpenSheetMusicDisplay("musicxml", {
+        autoResize: true, // just an example for an option, no option is necessary.
+        backend: "svg",
+        drawTitle: true,
+        // put further options here
+    });
+    // BrahWiMeSample.musicxml
+    osmd
+        .load("./BrahWiMeSample.musicxml")
+        .then(
+            function () {
+                osmd.render();
+                //  document.getElementById("osmdCanvasPage1").setAttribute("width", "100%")
+            }
+        );
+
 
     // bridge.callHandler('DeviceLoadJavascriptSuccess', { key: 'JSValue' }, function (response) {
     //     let system = response.system
