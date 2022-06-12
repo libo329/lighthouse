@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         WebView webview = findViewById(R.id.webView);
-        Button buttonSync = findViewById(R.id.buttonSync);
-        Button buttonAsync = findViewById(R.id.buttonAsync);
-        buttonSync.setOnClickListener(this);
-        buttonAsync.setOnClickListener(this);
+//        Button buttonSync = findViewById(R.id.buttonSync);
+//        Button buttonAsync = findViewById(R.id.buttonAsync);
+//        buttonSync.setOnClickListener(this);
+//        buttonAsync.setOnClickListener(this);
 
         MainWebView.getInstance().setupView(webview,this);
     }
@@ -36,25 +36,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.buttonSync) {
-            Log.d(TAG,"buttonSync onClick");
-            HashMap<String, String> data = new HashMap<>();
-            data.put("AndroidKey00","AndroidValue00");
-            //call js sync function
-            MainWebView.getInstance().jsMethod_.GetToken(data, map -> {
-                System.out.println("Next line is javascript data->>>");
-                System.out.println(map);
-            });
-        }else if(view.getId() == R.id.buttonAsync){
-            Log.d(TAG,"buttonAsync onClick");
-            HashMap<String, String> data = new HashMap<>();
-            data.put("AndroidKey01","AndroidValue01");
-            //call js Async function
-            MainWebView.getInstance().jsMethod_.AsyncCall(data, map -> {
-                System.out.println("Next line is javascript data->>>");
-                System.out.println(map);
-            });
-        }
+//        if (view.getId() == R.id.buttonSync) {
+//            Log.d(TAG,"buttonSync onClick");
+//            HashMap<String, String> data = new HashMap<>();
+//            data.put("AndroidKey00","AndroidValue00");
+//            //call js sync function
+//            MainWebView.getInstance().jsMethod_.GetToken(data, map -> {
+//                System.out.println("Next line is javascript data->>>");
+//                System.out.println(map);
+//            });
+//        }else if(view.getId() == R.id.buttonAsync){
+//            Log.d(TAG,"buttonAsync onClick");
+//            HashMap<String, String> data = new HashMap<>();
+//            data.put("AndroidKey01","AndroidValue01");
+//            //call js Async function
+//            MainWebView.getInstance().jsMethod_.AsyncCall(data, map -> {
+//                System.out.println("Next line is javascript data->>>");
+//                System.out.println(map);
+//            });
+//        }
     }
 
 

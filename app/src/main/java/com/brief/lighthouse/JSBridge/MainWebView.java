@@ -52,7 +52,7 @@ public class MainWebView {
             }
         });
 
-        nativeMethod_ = new NativeMethod(bridge);
+        nativeMethod_ = new NativeMethod(bridge,webview);
         nativeMethod_.registerMethod();
 
         jsMethod_ = new JSMethod(bridge);
@@ -60,7 +60,7 @@ public class MainWebView {
         // Loading html in local ，This way maybe meet cross domain. So You should not forget to set
         // /*...setAllowUniversalAccessFromFileURLs... */
         // If you loading remote web server,That can be ignored.
-        webview.loadUrl("file:///android_asset/Demo.html");
+        webview.loadUrl("file:///android_asset/lighthouse.html");
 
 //      index.html use SDBridge.js. This js file was create by webpack.
 //      webview.loadUrl("file:///android_asset/index.html");
