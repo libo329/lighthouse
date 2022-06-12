@@ -2,21 +2,12 @@ package com.brief.lighthouse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.WebSettings;
+
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
-
 import com.brief.lighthouse.JSBridge.MainWebView;
-import com.housenkui.sdbridgejava.WebViewJavascriptBridge;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LightHouse";
