@@ -12,13 +12,23 @@ setTimeout(() => {
     });
     // BrahWiMeSample.musicxml
     osmd
-        .load("./BrahWiMeSample.musicxml")
+        .load("/storage/emulated/0/musicxml/BrookeWestSample.musicxml")
         .then(
             function () {
                 osmd.render();
                 //  document.getElementById("osmdCanvasPage1").setAttribute("width", "100%")
             }
         );
+
+
+    document.getElementById("addfile").onclick = function () {
+        // 设置在此处单击#button时要发生的事件
+        console.log("i am be clicked\n");
+        bridge.callHandler('chooseFile',{ key: 'JSValue' }, function (response) {
+            console.log(response);
+        });
+    }
+
 
 
     // bridge.callHandler('DeviceLoadJavascriptSuccess', { key: 'JSValue' }, function (response) {
@@ -42,23 +52,43 @@ setTimeout(() => {
     // });
 
     // JS register method is called by native
-    // bridge.registerHandler('GetToken', function (data, responseCallback) {
-    //     console.log(data);
-    //     document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
-    //     let result = { token: "I am javascript's token" }
-    //     //JS gets the data and returns it to the native
-    //     responseCallback(result)
-    // });
-    // bridge.registerHandler('AsyncCall', function (data, responseCallback) {
-    //     console.log(data);
-    //     document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
-    //     // Call await function must with  (async () => { })();
-    //     (async () => {
-    //         const callback = await generatorLogNumber(1);
-    //         let result = { token: callback };
-    //         responseCallback(result);
-    //     })();
-    // });
+     bridge.registerHandler('GetToken', function (data, responseCallback) {
+         console.log(data);
+         document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
+         let result = { token: "I am javascript's token" }
+         //JS gets the data and returns it to the native
+         responseCallback(result)
+     });
+     bridge.registerHandler('AsyncCall', function (data, responseCallback) {
+         console.log(data);
+         document.getElementById("SDBridge").innerText = "JS get native data:" + JSON.stringify(data);
+         // Call await function must with  (async () => { })();
+         (async () => {
+             const callback = await generatorLogNumber(1);
+             let result = { token: callback };
+             responseCallback(result);
+         })();
+     });
+     bridge.registerHandler('OnChooseFile', function (data, responseCallback) {
+          console.log("12345466477");
+        //  var obj =JSON.parse(data);
+         console.log(data.file)
+         osmd
+              .load(data.file)
+              .then(
+                  function () {
+                      osmd.render();
+                      //  document.getElementById("osmdCanvasPage1").setAttribute("width", "100%")
+                  }
+              );
+
+//          (async () => {
+//              const callback = await generatorLogNumber(1);
+//              let result = { token: callback };
+//              responseCallback(result);
+//          })();
+      });
+
     // function generatorLogNumber(n) {
     //     return new Promise(res => {
     //         setTimeout(() => {

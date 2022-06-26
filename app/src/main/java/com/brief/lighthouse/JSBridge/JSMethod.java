@@ -23,4 +23,7 @@ public class JSMethod {
     public void AsyncCall(HashMap<String,String> data, Callback callback){
         bridge_.call("AsyncCall", data,callback);
     }
+    public void OnChooseFile(HashMap<String,String> data, Callback callback){
+        bridge_.call("OnChooseFile", data,callback);
+    }
 }

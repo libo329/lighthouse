@@ -3,6 +3,7 @@ package com.brief.lighthouse.JSBridge;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -52,7 +53,7 @@ public class MainWebView {
             }
         });
 
-        nativeMethod_ = new NativeMethod(bridge,webview);
+        nativeMethod_ = new NativeMethod(bridge,webview,ctx);
         nativeMethod_.registerMethod();
 
         jsMethod_ = new JSMethod(bridge);
@@ -68,11 +69,32 @@ public class MainWebView {
     //Allow Cross Domain
     private void setAllowUniversalAccessFromFileURLs (WebView webView){
         try {
-            Class<?> clazz = webView.getSettings().getClass();
-            Method method = clazz.getMethod(
-                    "setAllowUniversalAccessFromFileURLs", boolean.class);
-            method.invoke(webView.getSettings(), true);
-        } catch (IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+//            Class<?> clazz = webView.getSettings().getClass();
+//            Method method = clazz.getMethod(
+//                    "setAllowUniversalAccessFromFileURLs", boolean.class);
+//            method.invoke(webView.getSettings(), true);
+//
+            //初始化WebSettings
+            WebSettings settings = webView.getSettings();
+            settings.setJavaScriptEnabled(true);
+            String ua = settings.getUserAgentString();
+            settings.setUserAgentString(ua + "Latte");
+            //隐藏缩放控件
+            settings.setBuiltInZoomControls(false);
+            settings.setDisplayZoomControls(false);
+            //禁止缩放
+            settings.setSupportZoom(false);
+            //文件权限
+            settings.setAllowFileAccess(true);
+            settings.setAllowFileAccessFromFileURLs(true);
+            settings.setAllowUniversalAccessFromFileURLs(true);
+            settings.setAllowContentAccess(true);
+            //缓存相关
+            settings.setAppCacheEnabled(true);
+            settings.setDomStorageEnabled(true);
+            settings.setDatabaseEnabled(true);
+            settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
